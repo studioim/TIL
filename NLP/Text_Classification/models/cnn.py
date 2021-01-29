@@ -11,7 +11,7 @@ class CNNClassifier(nn.Module):
         use_batch_norm=False, # batchnorm을 쓸건지 dropout을 쓸건지
         dropout_p=.5,
         window_sizes=[3, 4, 5], # 3단어, 4단어, 5단어짜리 text classifier
-        n_filters=[100, 100, 100], # 3단어짜리 100개의 패턴, 4단어짜리 100개의 패턴, 5단어짜리 100개의 패턴
+        n_filters=[100, 100, 100], # 3단어짜리 100개의 패턴, 4단어짜리 100개의 패턴, 5단어짜리 100개의 패턴
     ):
         self.input_size = input_size # vocab size
         self.word_vec_size = word_vec_size
