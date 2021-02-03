@@ -7,20 +7,20 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
-from TC.trainer import Trainer
-from TC.data_loader import DataLoader
+from tc.trainer import Trainer
+from tc.data_loader import DataLoader
 
-from TC.models.rnn import RNNClassifier
-from TC.models.cnn import CNNClassifier
+from tc.models.rnn import RNNClassifier
+from tc.models.cnn import CNNClassifier
 
 def define_argparser():
     '''
     Define argument parser to set hyper-parameters.
     '''
-    p = argparse.ArguemntParser()
+    p = argparse.ArgumentParser()
     
     p.add_argument('--model_fn', required=True)
-    p.add_argument('--train_fn', require=True) # 학습에 쓸 트레이닝 파일
+    p.add_argument('--train_fn', required=True) # 학습에 쓸 트레이닝 파일
 
     p.add_argument('--gpu_id', type=int, default=-1) # cpu 같은 경우 보통 -1로 둔다
     p.add_argument('--verbose', type=int, default=2) # 수다스러움 정도. 얼마나 로그 많이 출력해줄거냐
@@ -43,14 +43,14 @@ def define_argparser():
 
     p.add_argument('--cnn', action='store_true')
     p.add_argument('--use_batch_norm', action='store_true')
-    p.add_argument('--window_sizes', type=int, nargs=3, default=[3, 4, 5])
-    p.add_argument('--n_filters', type=int, nargs=3, default=[100, 100, 100])
+    p.add_argument('--window_sizes', type=int, nargs='*', default=[3, 4, 5])
+    p.add_argument('--n_filters', type=int, nargs='*', default=[100, 100, 100])
     
     # rnn은 좀 더 컨텍스트적인 것을 보고, CNN은 구나 단어, 절 등의 패턴이 있는지 없는지를 보는 경향이 있다.
     # 두 모델의 장단이 있음 -> 앙상블 사용
     # 하나만 켜져 있으면 하나만 사용하지만 둘 다 켜져 있으면 둘 다 사용.
     
-    config = p.parse_agrs()
+    config = p.parse_args()
     
     return config
 

@@ -15,7 +15,7 @@ from ignite.metrics import RunningAverage
 from ignite.contrib.handlers.tqdm_logger import ProgressBar
 # epoch의 시작 iteration의 시작 등에 맞춰서 콜백함수를 등록할 수 있는 엔진을 제공하는 것이 이그나이트
 
-from simple_ntc.utils import get_grad_norm, get_parameter_norm
+from tc.utils import get_grad_norm, get_parameter_norm
 
 VERBOSE_SILENT = 0
 VERBOSE_EPOCH_WISE = 1
@@ -23,7 +23,7 @@ VERBOSE_BATCH_WISE = 2
 
 class MyEngine(Engine):
     
-    def __init__(self, fucn, model, crit, optimizer, config):
+    def __init__(self, func, model, crit, optimizer, config):
         # Ignite Engine does not have objects in below lines.
         # Thus, we assign class variables to access these object, during the procedure.
         self.model = model

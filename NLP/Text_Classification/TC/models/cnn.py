@@ -26,7 +26,7 @@ class CNNClassifier(nn.Module):
         super().__init__()
         
         self.emb = nn.Embedding(input_size, word_vec_size)
-        #Use nn.ModuleList to register each sub-modules.
+        # Use nn.ModuleList to register each sub-modules.
         self.feature_extractors = nn.ModuleList() # array list 같은 애, 그냥 리스트 쓰면 등록이 안 됨.
         for window_size, n_filter in zip(window_sizes, n_filters):
             self.feature_extractors.append(
@@ -41,9 +41,9 @@ class CNNClassifier(nn.Module):
                 )
             )
         
-        #An input of generator layer is max values from each filter.
+        # An input of generator layer is max values from each filter.
         self.generator = nn.Linear(sum(n_filters), n_classes)
-        #We use LogSoftmax + NLLLoss instead of Softmax + CrossEntorpy
+        # We use LogSoftmax + NLLLoss instead of Softmax + CrossEntorpy
         self.activation = nn.LogSoftmax(dim=-1)
         
     def forward(self, x): # 오버라이딩

@@ -1,6 +1,6 @@
 import torch.nn as nn
 
-class RNNClassifier(nn.Modules): # nn.Modules 상속
+class RNNClassifier(nn.Module): # nn.Module 상속
     
     def __init__( # __init__ 메소드
         self,
@@ -24,7 +24,7 @@ class RNNClassifier(nn.Modules): # nn.Modules 상속
         self.emb = nn.Embedding(input_size, word_vec_size) # 임베딩 레이어는 리니어 레이어, 어떤 차원의 입력(vocab size) 받아서 어떤 차원의 출력(몇차원의 워드 임베딩 벡터?)으로 내보낼지
         self.rnn = nn.LSTM(
             input_size=word_vec_size,
-            hidden_size=hidden_sizs,
+            hidden_size=hidden_size,
             num_layers=n_layers,
             dropout=dropout_p,
             batch_first=True, # batch_size를 벡터의 가장 앞으로 (bs, length, hs * 2)

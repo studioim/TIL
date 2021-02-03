@@ -1,5 +1,5 @@
 import sys
-import argpass
+import argparse
 
 import torch
 import torch.nn as nn
@@ -15,10 +15,10 @@ def define_argparser():
     
     p = argparse.ArgumentParser()
     
-    p.add_argumnet('--model_fn', required=True) # 어떤 모델 파일 불러올지
-    p.add_argumnet('--gpu_id', type=int, default=-1)
-    p.add_argumnet('--batch_size', type=int, default=256)
-    p.add_argumnet('--top_k', type=int, default=1) # 확률이 높은 하나 이상의 클래스 후보들을 보여줄 수 있다.
+    p.add_argument('--model_fn', required=True) # 어떤 모델 파일 불러올지
+    p.add_argument('--gpu_id', type=int, default=-1)
+    p.add_argument('--batch_size', type=int, default=256)
+    p.add_argument('--top_k', type=int, default=1) # 확률이 높은 하나 이상의 클래스 후보들을 보여줄 수 있다.
     
     config = p.parse_args()
     
