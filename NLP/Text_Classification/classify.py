@@ -5,8 +5,8 @@ import torch
 import torch.nn as nn
 from torchtext import data
 
-from TC.models.rnn import RNNClassifier
-from TC.models.cnn import CNNClassifier
+from tc.models.rnn import RNNClassifier
+from tc.models.cnn import CNNClassifier
 
 def define_argparser():
     '''
