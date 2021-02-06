@@ -109,11 +109,10 @@ def main(config):
         model = CNNClassifier(
             input_size=vocab_size,
             word_vec_size=config.word_vec_size,
-            hidden_size=config.hidden_size,
             n_classes=n_classes,
             use_batch_norm=config.use_batch_norm,
             dropout_p=config.dropout,
-            window_sizes=conifg.window_sizes,
+            window_sizes=config.window_sizes,
             n_filters=config.n_filters,
         )
         optimizer = optim.Adam(model.parameters())
